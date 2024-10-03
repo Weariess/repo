@@ -9,6 +9,7 @@ export default function Menu(){
             <Link href="/strona3">strona3</Link>
             <Link href="/strona4">strona4</Link>
             <Link href="/strona5">strona5</Link>
+            <Link href="/strona6">strona6</Link>
         </div>
         
     )

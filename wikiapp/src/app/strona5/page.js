@@ -2,19 +2,20 @@
 import { useState } from "react"
 export default function strona4(){
 
-    const [bg, setBg] = useState("bg-pink-500") 
+    const [bg, setBg] = useState("bg-slate-500") 
     const [input, setInput] = useState("")
 
 
     const color = () =>{
         setBg(input)
+        setInput("")
     }
 
 
     return(
         <div className={`h-screen w-full ${bg}`}>
 
-        <input className="bg-black" type="text" placeholder="type color" onChange={(e) => setInput(e.target.value)}></input>
+        <input value={input} className="bg-black" type="text" placeholder="type color" onChange={(e) => setInput(e.target.value)}></input>
         <button onClick={color}>change color</button>
         </div>
     )

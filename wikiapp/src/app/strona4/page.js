@@ -8,13 +8,14 @@ export default function strona4(){
 
     const send = () =>{
         seth1(input)
+        setInput("")
     }
 
 
     return(
         <div>
             <h1 className="h-[100px] w-[100px]">{h1}</h1>
-        <input className="bg-black" type="text" placeholder="Write something" onChange={(e) => setInput(e.target.value)}></input>
+        <input value={input} className="bg-black" type="text" placeholder="Write something" onChange={(e) => setInput(e.target.value)}></input>
         <button onClick={send}>Send</button>
         </div>
     )
