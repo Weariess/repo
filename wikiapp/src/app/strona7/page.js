@@ -1,5 +1,6 @@
 'use client'
 import { useState,useEffect } from "react";
+import Link from "next/link";
 import Country from "@/components/country";
 
 export default function Page(){
@@ -23,12 +24,14 @@ export default function Page(){
 
     return(
         <div className="flex flex-wrap w-full gap-2 h-screen justify-center items-center">
-        {/* <h1>{data && data[0].name.common}</h1> */}
+        
         {
             data &&
-            data.map((kraj,idx)=>(
-                <Country key={idx} kraj={kraj}/>
-            ))
+            data.map((kraj,idx)=>
+                <Link key={idx} href={`/podstrona/${kraj.cca2}`}>
+                <Country kraj={kraj}/>
+                </Link>
+            )
         }
         </div>
     );
