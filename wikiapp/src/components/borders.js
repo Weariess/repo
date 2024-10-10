@@ -5,9 +5,11 @@ import { useState } from "react";
 export default function Borders({borders}){
 
 const [kraje, setKraje] = useState(null)
-const [data, setData] = useState(null)
+//const [data, setData] = useState(null)
 const [error, setError] = useState(false)
 const [loading, setLoading] = useState(false)
+const [licz, setLicz] = useState([0])
+const [maxx, setMaxx] = useState(false)
     
     useEffect(() => {
         const getData = async() =>{
@@ -21,6 +23,8 @@ const [loading, setLoading] = useState(false)
                 krajeData.push(data[0])
             }
             setKraje(krajeData)
+            
+            
         }catch(error){
             console.error("error")
             setError(true)
@@ -32,13 +36,13 @@ const [loading, setLoading] = useState(false)
     },[borders])
 
     return(
-        <div className={"flex flex-wrap justify-center items-center space-x-4 p-4"}>
+        <div className={"flex flex-wrap justify-center items-center space-x-4 space-y-4"}>
             <h1>Borders</h1>
             {loading && <h1>Pobieranie danych...</h1>}
             {error && <h1>Nie udało się pobrać danych</h1>}
             {kraje && kraje.map((kraj, idx)=>
             <Link key={idx} href={`/podstrona/${kraj.cca2}`}>
-            <div className="gap-3 border-2 space-x-4">
+            <div className="gap-3 border-2 space-x-4 p-4">
             <Image className='h-[150px] w-[300px]'
             src={kraj.flags.png}
             width={200}
@@ -47,6 +51,8 @@ const [loading, setLoading] = useState(false)
             />
             <h1>{kraj.name.common}</h1>
             <h1>({kraj.cca2})</h1>
+            <h1>{kraj.population}</h1>
+            {maxx==true && <h1>Max</h1>}
         </div>
                 </Link>
         )
